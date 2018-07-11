@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 //Create an array of video games to start with
 
       var gameArray = ["Final Fantasy", "Mass Effect", "Gears of War", "Dark Souls", "Horizon Zero Dawn", "World of Warcraft", "Command and Conquer", "Paragon", "Fallout", "Skyrim"];
@@ -20,6 +20,34 @@
         }
       }
 
+//Create the call to Giphy API using the data from the buttons.
+
+$("button").on("click", function() {
+  var game = $(this).attr("data-name");
+
+  var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=4dRNEaTFYbZGFAteZdi8w68LLYFIR97S&q=" + game + "&limit=10&offset=0&rating=G&lang=en";
+
+  $.ajax({
+    url: queryURL,
+    method: "GET"
+  })
+    .then(function(response) {
+      var results = response.data;
+        for (var i = 0; i < results.length; i++) {
+        if (results[i].rating !== "r" && results[i].rating !== "pg-13") {
+          var gifDiv = $("<div>");
+          var rating = results[i].rating;
+          var p = $("<p>").text("Rating: " + rating);
+          var gameImage = $("<img>");
+          gameImage.attr("src", results[i].images.fixed_height.url);
+          gifDiv.append(p);
+          gifDiv.append(gameImage);
+          $("#games-gif-view").prepend(gifDiv);
+        }
+      }
+    });
+});
+
 // Create a function to handle button click events
 
       $("#add-game").on("click", function(event) {
@@ -30,23 +58,4 @@
       });
 
       renderButtons();
-=======
-//Create variables for game array, button generator, newly generated buttons, etc
 
-
-
-
-var gameArray = ["Final Fantasy", "Mass Effect", "Gears of War", "Dark Souls", "Horizon Zero Dawn", "World of Warcraft", "Command and Conquer", "Paragon", "Fallout", "Skyrim"];
-
-function generateButton(){
-	for(var i = 0; i < gameArray.length; i++) {
-		var newButton = $("<button>");
-		newButton.addClass("btn");
-		newButton.text(gameArray[i]);
-        $("#button-container").append(newButton);
-        console.log(newButton);
-	}
-	
-}
-generateButton();
->>>>>>> 9e66f3d1cbe94c8f0b771cf753c57a186d34d4cb
