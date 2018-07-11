@@ -1,40 +1,29 @@
 <!DOCTYPE html>
+<html lang="en">
 
-<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <title>Awesome Video Games</title>
 
-	<head>
+</head>
 
-		<meta charset="UTF-8">
-		<title>GifTastic Video Games!</title>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-		<link rel="stylesheet" type="text/css" href="assets/css/style.css">
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script type="text/javascript" src="assets/javascript/script.js"></script>
-        
-    </head>
-    
-	<body>
+<body>
 
-		<div class = "row">
-			<h1>Video Game Gifs</h1>
-			<div id = "button-container">
-            </div>
-        </div>
+  <div class="container">
+    <h1>Video Game Search</h1>
 
-		<div class = "row">
-			<div id = "giphy-container">
-			</div>
-			<div class = "col-md-6">
-			</div>
-			<div class = "col-md-6">
-				<form class="game-form">
-                    Want to add a game? Do it Here!
-                    <br>
-                    
-                    <input type = "text" name = "game-name" id = "video-game">
-                    <input type = "submit" value = "Submit" class = "btn" id = "submit">
-                    
-				</form>
-			</div>
-		</div>
-	</body>
+    <div id="games-view"></div>
+
+    <form id="game-form">
+      <label for="game-input">Add a Game Here</label>
+      <input type="text" id="game-input"><br>
+      <input id="add-game" type="submit" value="Add Game">
+    </form>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="assets/javascript/script.js"></script>
+	
+  </div>
+</body>
+
+</html>
